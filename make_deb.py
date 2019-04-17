@@ -2,7 +2,8 @@
 """
 hackish file to crreate deb from setup.py
 """
-
+from __future__ import absolute_import
+from __future__ import print_function
 import subprocess
 from email.utils import formatdate
 
@@ -29,7 +30,7 @@ def get_changelog(progname, version, changelog, date):
     """
     return """%s (%s) unstable; urgency=low
 
-  %s 
+  %s
 
  -- Olivier R-D <unknown@unknown>  %s """ % (progname, version, changelog, date)
 

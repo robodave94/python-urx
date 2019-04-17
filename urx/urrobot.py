@@ -3,11 +3,12 @@ Python library to control an UR robot through its TCP/IP interface
 Documentation from universal robots:
 http://support.universal-robots.com/URRobot/RemoteAccess
 """
-
+from __future__ import absolute_import
 import logging
 
 from urx import urrtmon
 from urx import ursecmon
+from six.moves import range
 
 __author__ = "Olivier Roulet-Dubonnet"
 __copyright__ = "Copyright 2011-2015, Sintef Raufoss Manufacturing"
@@ -443,14 +444,14 @@ class URRobot(object):
         self.up(-z, acc, vel)
 
     def move_RG2gripper(self,width):
-	"""
-	
-	Created by David Hinwood, University of Canberra
-	This function opens and closes the RG2 gripper produced by on robot
-	This work was inspired by Mark Silliman who produced a class to control
-	a gripper made by robotiq and Sharath Jotawar who created a ROS package
-	used in moveit to control the RG2 gripper 
-	"""
+        """
+
+        Created by David Hinwood, University of Canberra
+        This function opens and closes the RG2 gripper produced by on robot
+        This work was inspired by Mark Silliman who produced a class to control
+        a gripper made by robotiq and Sharath Jotawar who created a ROS package
+        used in moveit to control the RG2 gripper
+        """
         progrg2 = ""
         try:
             if width >= 0 and width <= 110:
