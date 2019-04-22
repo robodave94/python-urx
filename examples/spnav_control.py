@@ -1,4 +1,6 @@
 from __future__ import division
+from __future__ import absolute_import
+from __future__ import print_function
 
 import spnav
 import time
@@ -33,7 +35,7 @@ class Service(object):
         self.rot_coef = 5000
 
     def loop(self):
-        ts = 0 
+        ts = 0
         btn0_state = 0
         btn_event = None
         cmd = Cmd()
@@ -60,7 +62,7 @@ class Service(object):
                         cmd.rz = -1 * event.rotation[1] / self.lin_coef
                     if abs(event.rotation[2]) > 20:
                         cmd.rx = event.rotation[2] / self.lin_coef
-            
+
             if (time.time() - ts) > 0.12:
                 ts = time.time()
                 speeds = cmd.get_speeds()
@@ -72,7 +74,7 @@ class Service(object):
                 speeds = cmd.get_speeds()
                 #if speeds != [0 for _ in speeds]:
                 print(event)
-                print("Sending", speeds)
+                print(("Sending", speeds))
 
 
 if __name__ == '__main__':

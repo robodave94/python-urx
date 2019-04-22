@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+from __future__ import print_function
 from urx import ursecmon
 
 if __name__ == "__main__":
@@ -6,9 +8,9 @@ if __name__ == "__main__":
     data = f.read(99999)
     parser = ursecmon.ParserUtils()
     p, rest = parser.find_first_packet(data)
-    print(len(p))
+    print((len(p)))
     p, rest = parser.find_first_packet(rest)
-    print(len(p))
+    print((len(p)))
     s.write(p)
     p, rest = parser.find_first_packet(rest)
-    print(len(p))
+    print((len(p)))

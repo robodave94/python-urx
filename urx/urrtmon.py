@@ -4,6 +4,7 @@ Confer http://support.universal-robots.com/Technical/RealTimeClientInterface
 Note: The packet lenght given in the web-page is 740. What is actually received from the controller is 692. It is assumed that the motor currents, the last group of 48 bytes, are not send.
 Originally Written by Morten Lind
 '''
+from __future__ import absolute_import
 import logging
 import socket
 import struct

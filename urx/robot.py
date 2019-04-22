@@ -3,12 +3,14 @@ Python library to control an UR robot through its TCP/IP interface
 DOC LINK
 http://support.universal-robots.com/URRobot/RemoteAccess
 """
-
+from __future__ import absolute_import
+from __future__ import print_function
 
 import math3d as m3d
 import numpy as np
 
 from urx.urrobot import URRobot
+from six.moves import input
 
 __author__ = "Olivier Roulet-Dubonnet"
 __copyright__ = "Copyright 2011-2016, Sintef Raufoss Manufacturing"
@@ -227,18 +229,18 @@ class Robot(URRobot):
         print("A new coordinate system will be defined from the next three points")
         print("Firs point is X, second Origin, third Y")
         print("Set it as a new reference by calling myrobot.set_csys(new_csys)")
-        input("Move to first point and click Enter")
+        eval(input("Move to first point and click Enter"))
         # we do not use get_pose so we avoid rounding values
         pose = URRobot.getl(self)
-        print("Introduced point defining X: {}".format(pose[:3]))
+        print(("Introduced point defining X: {}".format(pose[:3])))
         px = m3d.Vector(pose[:3])
-        input("Move to second point and click Enter")
+        eval(input("Move to second point and click Enter"))
         pose = URRobot.getl(self)
-        print("Introduced point defining Origo: {}".format(pose[:3]))
+        print(("Introduced point defining Origo: {}".format(pose[:3])))
         p0 = m3d.Vector(pose[:3])
-        input("Move to third point and click Enter")
+        eval(input("Move to third point and click Enter"))
         pose = URRobot.getl(self)
-        print("Introduced point defining Y: {}".format(pose[:3]))
+        print(("Introduced point defining Y: {}".format(pose[:3])))
         py = m3d.Vector(pose[:3])
 
         new_csys = m3d.Transform.new_from_xyp(px - p0, py - p0, p0)

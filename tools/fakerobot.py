@@ -1,3 +1,6 @@
+from __future__ import absolute_import
+from __future__ import print_function
+
 import socket
 import threading
 import socketserver
@@ -13,14 +16,14 @@ class RequestHandler(socketserver.BaseRequestHandler):
         while True:
             data = str(self.request.recv(1024), 'ascii')
             cur_thread = threading.current_thread()
-            print("{} received {} from {}".format(cur_thread.name, data, self.client_address) )
+            print(("{} received {} from {}".format(cur_thread.name, data, self.client_address) ))
             if data == "":
                 return
 
         #when this methods returns, the connection to the client closes
 
     def setup(self):
-        print("Got new connection from {}".format( self.client_address) )
+        print(("Got new connection from {}".format( self.client_address) ))
         self.server.handlers.append(self)
 
     def finish(self):

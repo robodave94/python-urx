@@ -1,5 +1,8 @@
+from __future__ import absolute_import
+from __future__ import print_function
 import socket
 import sys
+from six.moves import range
 
 
 if __name__ == "__main__":
@@ -16,7 +19,7 @@ if __name__ == "__main__":
         for i in range(0, 20):
             data = sock.recv(1024)
             f.write(data)
-            print("Got packet: ", i)
+            print(("Got packet: ", i))
     finally:
         f.close()
         sock.close()

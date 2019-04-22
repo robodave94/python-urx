@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+from __future__ import print_function
 from math import pi
 
 import urx
@@ -13,13 +15,13 @@ if __name__ == "__main__":
         v = 0.05
         a = 0.3
         j = rob.getj()
-        print("Initial joint configuration is ", j)
+        print(("Initial joint configuration is ", j))
         t = rob.get_pose()
-        print("Transformation from base to tcp is: ", t)
+        print(("Transformation from base to tcp is: ", t))
         print("Translating in x")
         rob.translate((l, 0, 0), acc=a, vel=v)
         pose = rob.getl()
-        print("robot tcp is at: ", pose)
+        print(("robot tcp is at: ", pose))
         print("moving in z")
         pose[2] += l
         rob.movel(pose, acc=a, vel=v)
@@ -30,7 +32,7 @@ if __name__ == "__main__":
         t.pos[0] -= l
         rob.set_pose(t, vel=v, acc=a)
         print("Sending robot back to original position")
-        rob.movej(j, acc=0.8, vel=0.2) 
+        rob.movej(j, acc=0.8, vel=0.2)
 
 
     finally:

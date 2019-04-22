@@ -1,4 +1,5 @@
-import time 
+from __future__ import absolute_import
+import time
 import urx
 import logging
 
@@ -18,7 +19,7 @@ if __name__ == "__main__":
             if p[2] > pose[2] - 0.05:
                 break
 
-        pose[1] += l 
+        pose[1] += l
         rob.movep(pose, acc=a, vel=v, radius=r, wait=False)
         while True:
             p = rob.getl(wait=True)

@@ -1,6 +1,8 @@
 """
 Testing script that runs many of the urx methods, while attempting to keep robot pose around its starting pose
 """
+from __future__ import absolute_import
+from __future__ import print_function
 
 from math import pi
 import time
@@ -8,6 +10,7 @@ import sys
 
 import urx
 import logging
+from six.moves import input
 
 if sys.version_info[0] < 3:  # support python v2
     input = raw_input
@@ -15,11 +18,11 @@ if sys.version_info[0] < 3:  # support python v2
 def wait():
     if do_wait:
         print("Click enter to continue")
-        input()
+        eval(input())
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    
+
     do_wait = True
     if len(sys.argv) > 1:
         do_wait = False

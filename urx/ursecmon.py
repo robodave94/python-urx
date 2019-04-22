@@ -9,13 +9,14 @@ So do not rely on it unless you know no other client is running (Hint the UR jav
 http://support.universal-robots.com/Technical/PrimaryAndSecondaryClientInterface
 """
 
-
+from __future__ import absolute_import
 from threading import Thread, Condition, Lock
 import logging
 import struct
 import socket
 from copy import copy
 import time
+from six.moves import range
 
 __author__ = "Olivier Roulet-Dubonnet"
 __copyright__ = "Copyright 2011-2013, Sintef Raufoss Manufacturing"

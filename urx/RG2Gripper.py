@@ -1,4 +1,6 @@
 #! /usr/bin/env python
+from __future__ import absolute_import
+from __future__ import print_function
 from urx.robot import Robot
 import threading
 import logging
@@ -9,23 +11,23 @@ import time
             This work was inspired by Mark Silliman who produced a class to control
             a gripper made by robotiq in urx and Sharath Jotawar who created a ROS package
             used in moveit to control the RG2 gripper
-            
+
             Notes:
                 -Requires an Ethernet connection to your ur10, dynamically finds IP address
-                -While an object is grasped, the gripper is still going to 0 meaning if 
+                -While an object is grasped, the gripper is still going to 0 meaning if
                  you remove the object from the gripper while having set the width to zero
                  it will still go to zero
                 -Possible ways to determine grasping include setting the width to max for
                  non grasping movements and to evaluate pickup check the width
 
-	    
-            Future feautes
-	    While it is possible to currently infer whether the robot is currently holding 
-	    something it would be a beneficial feature to read the force being applied and
-	    return to user grasp success. Unfortunatly this was unfeasible during the first 
-	    round at development. It is on the horizon but on an unknown timeframe.
 
-	    License: LGPL-3.0
+        Future feautes
+            While it is possible to currently infer whether the robot is currently holding
+            something it would be a beneficial feature to read the force being applied and
+            return to user grasp success. Unfortunatly this was unfeasible during the first
+            round at development. It is on the horizon but on an unknown timeframe.
+
+        License: LGPL-3.0
 """
 
 
@@ -63,7 +65,7 @@ class RG2:
                     connection.close()
                     self.MonitorThreadRunning = False
                 except Exception as e:
-                    print e
+                    print(e)
                     pass
             return
 
@@ -82,7 +84,7 @@ class RG2:
         self.MonitorThreadRunning = True
         thread.start()
         self.Robot.send_program(cmd_str)
-	#small delay to wait for the thread
+        # small delay to wait for the thread
         time.sleep(0.2)
         return self.currentwidth
 

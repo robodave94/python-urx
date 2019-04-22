@@ -39,7 +39,7 @@ robotiq_2f_gripper_programs_CB3/advanced_template_test.script and view function
 "rq_get_var" there is an example of how to determine the current state of the
 gripper and if it's holding an object.
 """  # noqa
-
+from __future__ import absolute_import
 import logging
 import os
 import time
